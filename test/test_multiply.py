@@ -1,4 +1,4 @@
-from multiply import Vector
+from vector import Vector
 
 
 class TestVector:
