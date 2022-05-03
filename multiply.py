@@ -1,3 +1,8 @@
-# a = 1 + 2sqrt(2)
-# b = 3 + 3sqrt(2)
-# write function wich return a * b = 5 + 4 sqrt(2)
+class Vector:
+    def __init__(self, x: float, y: float):
+        self.x = x
+        self.y = y
+
+
+def multiply(a: Vector, b: Vector) -> float:
+    return a.x * b.x + a.y * b.y
