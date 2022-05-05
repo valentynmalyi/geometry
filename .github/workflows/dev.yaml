@@ -20,8 +20,10 @@ jobs:
           pip install pipenv
       - name: Install requirements
         run: pipenv install --ignore-pipfile --system
+      - name: Run mypy
+        run: mypy .
       - name: Run pytest
-        run: pytest
+        run: pytest .
       - name: Send telegram message
         uses: appleboy/telegram-action@master
         if: ${{ failure() }}

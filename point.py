@@ -1,7 +1,17 @@
+from vector import Vector
+
+
 class Point:
-    def __init__(self, x: float, y: float):
+    def __init__(self, x: int, y: int):
         self.x = x
         self.y = y
 
-# class Segment:
-# I want to get vector from segment
+
+class LineSegment:
+    def __init__(self, a: Point, b: Point):
+        self.a = a
+        self.b = b
+
+    @property
+    def vector(self) -> Vector:
+        return Vector(self.b.x - self.a.x, self.b.y - self.b.y)
