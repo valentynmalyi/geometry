@@ -1,3 +1,5 @@
+from math import isclose
+
 from vector import Vector
 
 
@@ -13,3 +15,8 @@ class TestVector:
         assert Vector(0, 1) != Vector(1, 1)
         assert Vector(0, 1) != object()
 
+    def test_square_length_property(self):
+        assert Vector(1, 1).square_length == 2
+
+    def test_length_property(self):
+        assert isclose(Vector(1, 1).length, 2 ** 0.5)

@@ -15,3 +15,5 @@ class LineSegment:
     @property
     def vector(self) -> Vector:
         return Vector(self.b.x - self.a.x, self.b.y - self.b.y)
+
+    # implement methods square_length and length

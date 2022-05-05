@@ -18,3 +18,11 @@ class Vector:
         if not isinstance(other, Vector):
             return False
         return self.x == other.x and self.y == other.y
+
+    @property
+    def square_length(self) -> int:
+        return self.x ** 2 + self.y ** 2
+
+    @property
+    def length(self) -> float:
+        return self.square_length ** 0.5
