@@ -6,6 +6,9 @@ class Point:
         self.x = x
         self.y = y
 
+    def __repr__(self) -> str:
+        return f"({self.x}, {self.y})"
+
 
 class LineSegment:
     def __init__(self, a: Point, b: Point):
@@ -14,6 +17,12 @@ class LineSegment:
 
     @property
     def vector(self) -> Vector:
-        return Vector(self.b.x - self.a.x, self.b.y - self.b.y)
+        return Vector(self.b.x - self.a.x, self.b.y - self.a.y)
 
-    # implement methods square_length and length
+    @property
+    def square_length(self) -> int:
+        return self.vector.square_length
+
+    @property
+    def length(self) -> float:
+        return self.vector.length

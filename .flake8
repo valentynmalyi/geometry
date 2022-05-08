@@ -3,3 +3,4 @@ max-line-length = 120
 exclude = venv,
 max-complexity = 3
 import-order-style = google
+test-func-name-validator-regex = test_.*
