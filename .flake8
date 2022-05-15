@@ -2,5 +2,11 @@
 max-line-length = 120
 exclude = venv,
 max-complexity = 3
-import-order-style = edited
+per-file-ignores = __init__.py:F401,I100
+
+
+# flake8-test-name
 test-func-name-validator-regex = test_.*
+
+# flake8-import-order
+import-order-style = edited

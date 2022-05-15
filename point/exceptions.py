@@ -1,0 +1,2 @@
+class PointsException(Exception):
+    pass

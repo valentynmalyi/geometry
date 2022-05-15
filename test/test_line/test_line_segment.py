@@ -2,9 +2,9 @@ from math import isclose
 
 import pytest
 
-from point import LineSegment, Point
-from triangle import RightTriangle, Triangle
-from vector import Vector
+from line import Vector
+from line.line_segment import exceptions, LineSegment
+from point import Point
 
 
 class TestLineSegment:
@@ -17,9 +17,7 @@ class TestLineSegment:
     def test_length(self):
         assert isclose(LineSegment(Point(2, 2), Point(1, 1)).length, 2 ** 0.5)
 
-
-class TestRightTriangle:
-    def test_init_triangle(self):
-        assert isinstance(RightTriangle(Point(0, 0), Point(1, 0), Point(0, 2)), Triangle)
-        with pytest.raises(Exception):
-            RightTriangle(Point(3, 3), Point(1, 0), Point(0, 2))
+    def test_validate_equal_points(self):
+        LineSegment(Point(0, 0), Point(1, 1))
+        with pytest.raises(exceptions.EqualPoints):
+            LineSegment(Point(0, 0), Point(0, 0))
