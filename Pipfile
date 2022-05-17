@@ -10,6 +10,7 @@ typed-ast = "*"
 flake8 = "==4.0.1"
 flake8-test-name = "*"
 flake8-import-order = "*"
+flake8-multiline-containers = "*"
 
 [dev-packages]
 

@@ -20,24 +20,24 @@ class Triangle:
     @classmethod
     def _validate(cls, a: Point, b: Point, c: Point) -> None:
         cls._validate_is_point(a, b, c)
-        cls._validate_is_two_dot_line(a, b, c)
-        cls._validate_is_three_dot_line(a, b, c)
+        cls._validate_is_line(a, b, c)
 
     @classmethod
-    def _validate_is_three_dot_line(cls, a: Point, b: Point, c: Point) -> None:
-        if a.x == b.x == c.x or a.y == b.y == c.y:
-            raise exceptions.IsLine(LineSegment(a, c))
-
-    @classmethod
-    def _validate_is_two_dot_line(cls, a: Point, b: Point, c: Point) -> None:
+    def _validate_is_line(cls, a: Point, b: Point, c: Point) -> None:
         for a, b, c in permutations([a, b, c], 3):
             cls._validate_line_segment(a, b, c)
+            cls._validate_triangle_inequality(a, b, c)
 
     @staticmethod
     def _validate_line_segment(a: Point, b: Point, c: Point) -> None:
         try:
             LineSegment(a, b)
         except line_exception.EqualPoints:
+            raise exceptions.IsLine(LineSegment(a, c))
+
+    @staticmethod
+    def _validate_triangle_inequality(a: Point, b: Point, c: Point) -> None:
+        if LineSegment(a, c).length >= (LineSegment(a, b).length + LineSegment(b, c).length):
             raise exceptions.IsLine(LineSegment(a, c))
 
     @staticmethod
@@ -53,8 +53,8 @@ class RightTriangle(Triangle):
 
     @classmethod
     def _validate_is_right(cls, a: Point, b: Point, c: Point) -> None:
-        side = sorted([LineSegment(a, b).square_length,
-                       LineSegment(b, c).square_length,
-                       LineSegment(a, c).square_length])
-        if not isclose(side[2], side[1] + side[0]):
+        side_a, side_b, side_c = sorted([
+            LineSegment(a, b).square_length, LineSegment(b, c).square_length, LineSegment(a, c).square_length
+        ])
+        if not isclose(side_c, side_a + side_b):
             raise exceptions.IsNotRight(f'{cls}')
