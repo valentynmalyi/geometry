@@ -2,8 +2,8 @@ from math import isclose
 
 import pytest
 
-from line import Vector
-from line.line_segment import exceptions, LineSegment
+from line import exceptions, Vector
+from line.line_segment import LineSegment
 from point import Point
 
 

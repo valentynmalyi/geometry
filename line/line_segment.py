@@ -1,12 +1,15 @@
+from geometry import Figure
 from point import Point
 
-from . import exceptions
+from . import validations
 from .vector import Vector
 
 
-class LineSegment:
+class LineSegment(Figure):
+    validation_class = validations.LineSegmentValidation
+
     def __init__(self, a: Point, b: Point):
-        self._validate_equal_points(a, b)
+        super().__init__(a, b)
         self.a = a
         self.b = b
 
@@ -24,8 +27,3 @@ class LineSegment:
     @property
     def length(self) -> float:
         return self.vector.length
-
-    @staticmethod
-    def _validate_equal_points(a: Point, b: Point) -> None:
-        if a == b:
-            raise exceptions.EqualPoints(a)

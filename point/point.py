@@ -4,10 +4,10 @@ from .validations import PointValidation
 
 
 class Point(Figure):
-    validation = PointValidation
+    validation_class = PointValidation
 
     def __init__(self, x: int, y: int):
-        self.validation().validate()
+        super().__init__()
         self.x = x
         self.y = y
 
