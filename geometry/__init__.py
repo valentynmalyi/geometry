@@ -1,2 +1,2 @@
-from .validation import FigureValidation
 from .figure import Figure
+from .validation import FigureValidation

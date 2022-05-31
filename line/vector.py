@@ -1,10 +1,12 @@
 from __future__ import annotations
 
+from dataclasses import dataclass
 
+
+@dataclass()
 class Vector:
-    def __init__(self, x: float, y: float):
-        self.x = x
-        self.y = y
+    x: float
+    y: float
 
     def __add__(self, other: Vector) -> Vector:
         x = self.x + other.x
@@ -13,11 +15,6 @@ class Vector:
 
     def __mul__(self, other: Vector) -> float:
         return self.x * other.x + self.y * other.y
-
-    def __eq__(self, other: object) -> bool:
-        if not isinstance(other, Vector):
-            return False
-        return self.x == other.x and self.y == other.y
 
     @property
     def square_length(self) -> float:
