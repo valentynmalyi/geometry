@@ -1,3 +1,5 @@
+from dataclasses import dataclass
+
 from geometry import Figure
 from point import Point
 
@@ -5,16 +7,11 @@ from . import validations
 from .vector import Vector
 
 
+@dataclass()
 class LineSegment(Figure):
     validation_class = validations.LineSegmentValidation
-
-    def __init__(self, a: Point, b: Point):
-        super().__init__(a, b)
-        self.a = a
-        self.b = b
-
-    def __repr__(self) -> str:
-        return f"A({self.a}), B({self.b})"
+    a: Point
+    b: Point
 
     @property
     def vector(self) -> Vector:
